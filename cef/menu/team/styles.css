@@ -1,0 +1,8 @@
+p#VehicleSpeedBoxText {
+    color: #e61414;
+    text-align: center;
+    text-shadow: 2px 2px 4px black;
+    font-weight: bold;
+    padding: 0.66vh;
+    z-index: 101;
+}

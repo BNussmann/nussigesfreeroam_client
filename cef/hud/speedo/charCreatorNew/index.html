@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+    <div class="parallelogram-box">
+        <div class="category" id="abstammung">
+            <div class="category-button">Abstammung</div>
+            <div class="sliders">
+                <div class="slider-container">
+                    <div class="slider-label">Mutter</div>
+                    <input type="range" class="slider" min="0" max="10" value="5">
+                    <div class="slider-value-container">
+                        <div class="slider-value-box"><span id="mutter-value">5</span></div>
+                    </div>
+                </div>
+                <div class="slider-container">
+                    <div class="slider-label">Vater</div>
+                    <input type="range" class="slider" min="0" max="10" value="5">
+                    <div class="slider-value-container">
+                        <div class="slider-value-box"><span id="vater-value">5</span></div>
+                    </div>
+                </div>
+                <div class="slider-container">
+                    <div class="slider-label">Eltern Mischung</div>
+                    <input type="range" class="slider" min="0" max="10" value="5">
+                    <div class="slider-value-container">
+                        <div class="slider-value-box"><span id="eltern-mischung-value">5</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="category" id="koerper">
+            <div class="category-button">Körper</div>
+            <div class="sliders">
+                <div class="slider-container">
+                    <div class="slider-label">Augenfarbe</div>
+                    <input type="range" class="slider" min="0" max="10" value="5">
+                    <div class="slider-value-container">
+                        <div class="slider-value-box"><span id="augenfarbe-value">5</span></div>
+                    </div>
+                </div>
+                <div class="slider-container">
+                    <div class="slider-label">Augenbrauen</div>
+                    <input type="range" class="slider" min="0" max="10" value="5">
+                    <div class="slider-value-container">
+                        <div class="slider-value-box"><span id="augenbrauen-value">5</span></div>
+                    </div>
+                </div>
+                <div class="slider-container">
+                    <div class="slider-label">Nasenhöhe</div>
+                    <input type="range" class="slider" min="0" max="10" value="5">
+                    <div class="slider-value-container">
+                        <div class="slider-value-box"><span id="nasenhoehe-value">5</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="category" id="kleidung">
+            <div class="category-button">Kleidung</div>
+            <div class="sliders">
+                <div class="slider-container">
+                    <div class="slider-label">Oberkörper</div>
+                    <input type="range" class="slider" min="0" max="10" value="5">
+                    <div class="slider-value-container">
+                        <div class="slider-value-box"><span id="augenfarbe-value">5</span></div>
+                    </div>
+                </div>
+                <div class="slider-container">
+                    <div class="slider-label">Hose</div>
+                    <input type="range" class="slider" min="0" max="10" value="5">
+                    <div class="slider-value-container">
+                        <div class="slider-value-box"><span id="augenbrauen-value">5</span></div>
+                    </div>
+                </div>
+                <div class="slider-container">
+                    <div class="slider-label">Schuhe</div>
+                    <input type="range" class="slider" min="0" max="10" value="5">
+                    <div class="slider-value-container">
+                        <div class="slider-value-box"><span id="nasenhoehe-value">5</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let activeCategory;
+
+        const categories = document.querySelectorAll('.category');
+
+        categories.forEach(category => {
+            const button = category.querySelector('.category-button');
+            const sliders = category.querySelector('.sliders');
+
+            button.addEventListener('click', () => {
+                if (sliders.style.maxHeight && activeCategory) {
+                    sliders.style.maxHeight = null;
+                    button.classList.remove('active');
+                    activeCategory = false;
+                } else if(!activeCategory) {
+                    sliders.style.maxHeight = sliders.scrollHeight + "px";
+                    button.classList.add('active');
+                    activeCategory = true;
+                }
+            });
+        });
+
+        const sliders = document.querySelectorAll('.slider');
+
+        sliders.forEach(slider => {
+            const sliderValueBox = slider.parentElement.querySelector('.slider-value-box');
+
+            const updateSliderValue = () => {
+                sliderValueBox.textContent = slider.value;
+            };
+
+            slider.addEventListener('input', updateSliderValue);
+
+            updateSliderValue();
+        });
+
+
+
+
+
+    </script>
+</body>
+
+</html>
